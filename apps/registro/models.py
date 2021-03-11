@@ -1,5 +1,4 @@
 from django.db import models
-from apps.paciente.models import Paciente
 
 # Create your models here.
 
@@ -29,30 +28,3 @@ class Medicacion(models.Model):
 
    def __str__(self):
        return self.marca
-
-class Registro(models.Model):
-   id=models.AutoField(primary_key=True)
-   peso=models.IntegerField(blank=True, null=True)
-   altura=models.FloatField(max_length=10, blank=True, null=True)
-   pres_arterial=models.IntegerField(blank=True, null=True)
-   hemog_glic=models.IntegerField(blank=True, null=True)
-   saturacion_oxig=models.IntegerField(blank=True, null=True)
-   frec_cardiaca=models.IntegerField(blank=True, null=True)
-   fil_glomerular=models.IntegerField(blank=True, null=True)
-   vacunacion=models.BooleanField('Ultimo refuerzo', default=True)
-   temperatura=models.FloatField(max_length=10, blank=True, null=True)
-   fuma=models.BooleanField('Fuma', default=False)
-   indece_masa_corp=models.FloatField(max_length=10, blank=True, null=True)
-   vef1=models.IntegerField(blank=True, null=True)
-   paciente=models.ForeignKey(Paciente, null=True, blank=True, on_delete=models.CASCADE)
-   enfermedad=models.ForeignKey(Enfermedad, null=True, blank=True, on_delete=models.CASCADE)
-   medicacion=models.ForeignKey(Medicacion, null=True, blank=True, on_delete=models.CASCADE)
-
-   class Meta:
-      verbose_name='Registro'
-      verbose_name_plural='Registros'
-      ordering=['id']
-
-   def __str__(self):
-      return '{}'.format(self.id)
-   
