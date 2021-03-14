@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import PacienteForm
+from .models import Paciente, Documento
 
 # Create your views here.
 
@@ -15,3 +16,7 @@ def crearPaciente(request):
    else:
       paciente_form=PacienteForm()
    return render(request, 'paciente/crear_paciente.html', {'paciente_form':paciente_form})
+
+def listarPaciente(request):
+   pacientes=Paciente.objects.all()
+   return render(request, 'paciente/listar_paciente.html', {'pacientes':pacientes})

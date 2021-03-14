@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+
+{% block titulo %}
+   Listado de Pacientes
+{% endblock titulo %}
+
+
+{% block body %}
+   
+   {% if pacientes %}
+      <table>
+         <thead>
+            <tr>
+               <th>#</th>
+               <th>Nombres</th>
+               <th>Apellidos</th>
+               <th>Fecha Nacimiento</th>
+               <th>Documento</th>
+               <th>Altura</th>
+            </tr>
+         </thead>
+         <tbody>
+            
+            {% for paciente in pacientes %}
+               <tr>
+                  <td>{{ paciente.id }}</td>
+                  <td>{{ paciente.nombres }}</td>
+                  <td>{{ paciente.apellidos }}</td>
+                  <td>{{ paciente.fnacimiento }}</td>
+                  <td>{{ paciente.documento_number }}</td>
+                  <td>{{ paciente.altura }}</td>
+               </tr>   
+            {% endfor %}
+            
+         </tbody>
+      </table>
+   {% else %}
+      <h1>No existen pacientes registrados</h1>
+   {% endif %}
+      
+{% endblock body %}
+   
