@@ -19,7 +19,7 @@ def crearPaciente(request):
    return render(request, 'paciente/crear_paciente.html', {'paciente_form':paciente_form})
 
 def listarPaciente(request):
-   pacientes=Paciente.objects.all()
+   pacientes=Paciente.objects.filter(estado=True)
    return render(request, 'paciente/listar_paciente.html', {'pacientes':pacientes})
 
 def editarPaciente(request, id):
@@ -42,6 +42,7 @@ def editarPaciente(request, id):
 def eliminarPaciente(request, id):
    paciente=Paciente.objects.get(id=id)
    if request.method=='POST':
-      paciente.delete()
+      paciente.estado=False
+      paciente.save()
       return redirect('paciente:listar_paciente')
    return render(request, 'paciente/eliminar_paciente.html', {'paciente':paciente})
