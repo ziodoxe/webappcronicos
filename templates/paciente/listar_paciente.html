@@ -17,6 +17,7 @@
                <th>Fecha Nacimiento</th>
                <th>Documento</th>
                <th>Altura</th>
+               <th>Opciones</th>
             </tr>
          </thead>
          <tbody>
@@ -29,6 +30,9 @@
                   <td>{{ paciente.fnacimiento }}</td>
                   <td>{{ paciente.documento_number }}</td>
                   <td>{{ paciente.altura }}</td>
+                  <td>
+                     <a href="{% url 'paciente:editar_paciente' paciente.id %}">Editar</a>
+                  </td>
                </tr>   
             {% endfor %}
             

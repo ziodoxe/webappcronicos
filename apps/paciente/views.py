@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.core.exceptions import ObjectDoesNotExist
 from .forms import PacienteForm
 from .models import Paciente, Documento
 
@@ -20,3 +21,20 @@ def crearPaciente(request):
 def listarPaciente(request):
    pacientes=Paciente.objects.all()
    return render(request, 'paciente/listar_paciente.html', {'pacientes':pacientes})
+
+def editarPaciente(request, id):
+   paciente_form=None
+   error=None
+   try:
+      paciente=Paciente.objects.get(id=id)
+      if request.method=='GET':
+         paciente_form=PacienteForm(instance=paciente)
+      else:
+         paciente_form=PacienteForm(request.POST, instance=paciente)
+         if paciente_form.is_valid():
+            paciente_form.save()
+         return redirect('index')
+   except ObjectDoesNotExist as e:
+      error=e
+   
+   return render(request, 'paciente/crear_paciente.html', {'paciente_form':paciente_form, 'error':error})
