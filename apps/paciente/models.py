@@ -28,6 +28,7 @@ class Paciente(models.Model):
    localidad=models.CharField(max_length=200, blank=False, null=False)
    telefono=models.IntegerField(blank=False, null=False)
    correo=models.EmailField()
+   estado=models.BooleanField('Estado', default=True)
 
    peso=models.IntegerField(blank=True, null=True)
    altura=models.FloatField(max_length=10, blank=True, null=True)

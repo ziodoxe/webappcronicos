@@ -38,3 +38,10 @@ def editarPaciente(request, id):
       error=e
    
    return render(request, 'paciente/crear_paciente.html', {'paciente_form':paciente_form, 'error':error})
+
+def eliminarPaciente(request, id):
+   paciente=Paciente.objects.get(id=id)
+   if request.method=='POST':
+      paciente.delete()
+      return redirect('paciente:listar_paciente')
+   return render(request, 'paciente/eliminar_paciente.html', {'paciente':paciente})
