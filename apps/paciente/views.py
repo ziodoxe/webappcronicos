@@ -2,11 +2,16 @@ from django.shortcuts import render, redirect
 from django.core.exceptions import ObjectDoesNotExist
 from .forms import PacienteForm
 from .models import Paciente, Documento
+from django.views.generic import View
 
 # Create your views here.
 
-def Home(request):
+def home(request):
    return render(request, 'index.html')
+
+class Inicio(View):
+   def get(self, request, *args, **kwargs):
+      return render(request, 'index.html')
 
 def crearPaciente(request):
    if request.method=='POST':
