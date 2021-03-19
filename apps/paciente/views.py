@@ -2,12 +2,18 @@ from django.shortcuts import render, redirect
 from django.core.exceptions import ObjectDoesNotExist
 from .forms import PacienteForm
 from .models import Paciente, Documento
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 
 # Create your views here.
 
 class Inicio(TemplateView):
    template_name='index.html'
+
+class ListadoPaciente(ListView):
+   model=Paciente
+   template_name='paciente/listar_paciente.html'
+   context_object_name='pacientes'
+   queryset=Paciente.objects.filter(estado=True)
 
 def crearPaciente(request):
    if request.method=='POST':
