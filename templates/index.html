@@ -26,6 +26,12 @@
       
     {% endblock css_datatables %}
 
+    
+    {% block iCheck %}
+      
+    {% endblock iCheck %}
+      
+
 
     <!-- Custom Theme Style -->
     <link href="{% static 'build/css/custom.min.css' %}" rel="stylesheet">
@@ -288,6 +294,8 @@
 
         <!-- /page content -->
 
+        
+
         <!-- footer content -->
         <footer>
           <div class="pull-right">
@@ -298,6 +306,15 @@
         <!-- /footer content -->
       </div>
     </div>
+
+
+    <!-- Validators -->
+
+    
+    {% block js_validator %}
+          
+    {% endblock js_validator %}
+      
 
     <!-- jQuery -->
     <script src="{% static 'vendors/jquery/dist/jquery.min.js' %}"></script>

@@ -31,12 +31,12 @@
     FormValidator.prototype = {
         // Validation error texts
         texts : {
-            invalid         : 'El valor ingresado es incorrecto',
+            invalid         : 'Valor ingresado incorrecto',
             short           : 'El valor corto o pequeño',
             long            : 'Demasiado largo',
             checked         : 'debe ser verificado',
             empty           : 'Por favor ingrese algo aquí',
-            select          : 'Por favor seleccione una opción',
+            select          : 'Por favor elija una opción',
             number_min      : 'Valor muy pequeño',
             number_max      : 'Valor muy alto',
             url             : 'URL incorrecta',
@@ -47,7 +47,7 @@
             time            : 'Horario incorrecto',
             password_repeat : 'Las contraseñas no coinciden',
             no_match        : 'No hay coincidencia',
-            complete        : 'El valor ingresado no esta completo'
+            complete        : 'Valor ingresado incompleto'
         },
 
         // default settings
