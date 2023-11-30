@@ -15,6 +15,7 @@ class Enfermedad(models.Model):
        return self.nombre
 
 
+
 class Medicacion(models.Model):
    id=models.AutoField(primary_key=True)
    marca=models.CharField(max_length=100, null=True, blank=True)

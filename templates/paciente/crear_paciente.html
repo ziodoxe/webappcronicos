@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block iCheck %}
-<link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+<link href="{% static 'vendors/iCheck/skins/flat/green.css' %}" rel="stylesheet">
 {% endblock iCheck %}
 
 
@@ -63,7 +63,7 @@
                            <label class="control-label col-md-3 col-sm-3 label-align">Tipo de documento<span class="required">*</span></label>
                            <div class="col-md-6 col-sm-6 ">
                               <select class="form-control" required="required">
-                                 <option>Elija una opcion</option>
+                                 <option disabled>Elija una opcion</option>
                                  <option>CI: Cedula de Identidad</option>
                                  <option>DNI: Documento Nacional de Identidad</option>
                                  <option>LC: Libreta Civica</option>
@@ -152,7 +152,7 @@
                                  class="required">*</span></label>
                            <div class="col-md-6 col-sm-6">
                               <input class="form-control" type="number" class='number' name="saturacion_oxig"
-                                 data-validate-minmax="1,10" required='required'>
+                                 data-validate-minmax="1,100" required='required'>
                            </div>
                         </div>
                         <div class="field item form-group">
@@ -172,9 +172,9 @@
                            </div>
                         </div>
 
-                        
-                        <div class="form-group row">
-                           <label class="col-md-3 col-sm-3  control-label label-align">Fuma<span>*</span></label>
+                        <br>
+                        <div class="field item form-group">
+                           <label class="col-md-3 col-sm-3  control-label label-align">Ultimo refuerzo<span>*</span></label>
 
                            <div class="col-md-9 col-sm-9 ">
                               <div class="checkbox">
@@ -194,6 +194,21 @@
                                  data-validate-minmax="1,10" required='required'>
                            </div>
                         </div>
+
+                        <br>
+                        <div class="field item form-group">
+                           <label class="col-md-3 col-sm-3  control-label label-align">Fuma<span>*</span></label>
+
+                           <div class="col-md-9 col-sm-9 ">
+                              <div class="checkbox">
+                                 <label>
+                                    <input type="checkbox" class="flat">
+                                 </label>
+                              </div>
+                           </div>
+                        </div>
+
+
                         <div class="field item form-group">
                            <label class="col-form-label col-md-3 col-sm-3  label-align">Indice de masa corporal<span
                                  class="required">*</span></label>
@@ -210,51 +225,34 @@
                                  data-validate-minmax="1,10" required='required'>
                            </div>
                         </div>
+
                         <div class="field item form-group">
-                           <label class="col-form-label col-md-3 col-sm-3  label-align">Time<span
-                                 class="required">*</span></label>
-                           <div class="col-md-6 col-sm-6">
-                              <input class="form-control" class='time' type="time" name="time"  required='required'>
+                           <label class="control-label col-md-3 col-sm-3 label-align">Enfermedad<span class="required">*</span></label>
+                           <div class="col-md-6 col-sm-6 ">
+                              <select class="form-control" required="required">
+                                 {% for enfermedad in enfermedades %}
+                                    <option>{{ enfermedad.nombre }}</option>
+                                 {% endfor %}
+                              </select>
                            </div>
                         </div>
-                     
                         <div class="field item form-group">
-                           <label class="col-form-label col-md-3 col-sm-3  label-align">Password<span
-                                 class="required">*</span></label>
-                           <div class="col-md-6 col-sm-6">
-                              <input class="form-control" type="password" id="password1"  name="password"
-                                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}"
-                                 title="Minimum 8 Characters Including An Upper And Lower Case Letter,   A Number And A Unique Character"
-                                 required />
-                           
-                              <span style="position: absolute;right:15px;top:7px;" onclick="hideshow()   ">
-                                 <i id="slash" class="fa fa-eye-slash"></i>
-                                 <i id="eye" class="fa fa-eye"></i>
-                              </span>
+                           <label class="control-label col-md-3 col-sm-3 label-align">Medicacion<span class="required">*</span></label>
+                           <div class="col-md-6 col-sm-6 ">
+                              <select class="form-control" required="required">
+                                 {% for medicacion in medicaciones %}
+                                    <option>{{ medicacion.marca }}</option>
+                                 {% endfor %}
+                              </select>
                            </div>
                         </div>
-                     
-                        <div class="field item form-group">
-                           <label class="col-form-label col-md-3 col-sm-3  label-align">Repeat  password<span
-                                 class="required">*</span></label>
-                           <div class="col-md-6 col-sm-6">
-                              <input class="form-control" type="password" name="password2"   data-validate-linked='password'
-                                 required='required' />
-                           </div>
-                        </div>
-                        
-                        <div class="field item form-group">
-                           <label class="col-form-label col-md-3 col-sm-3  label-align">message<span
-                                 class="required">*</span></label>
-                           <div class="col-md-6 col-sm-6">
-                              <textarea required="required" name='message'></textarea>
-                           </div>
-                        </div>
+
+
                         <div class="ln_solid">
                            <div class="form-group">
                               <div class="col-md-6 offset-md-3">
-                                 <button type='submit' class="btn btn-primary">Submit</button>
-                                 <button type='reset' class="btn btn-success">Reset</button>
+                                 <button type='submit' class="btn btn-primary">Enviar</button>
+                                 <button type='reset' class="btn btn-success">Borrar</button>
                               </div>
                            </div>
                         </div>

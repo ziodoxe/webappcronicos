@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.core.exceptions import ObjectDoesNotExist
 from .forms import PacienteForm
 from .models import Paciente, Documento
-from django.views.generic import TemplateView, ListView
+from django.views.generic import TemplateView, ListView, CreateView
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -14,6 +15,14 @@ class ListadoPaciente(ListView):
    template_name='paciente/listar_paciente.html'
    context_object_name='pacientes'
    queryset=Paciente.objects.filter(estado=True)
+
+
+class CrearPaciente(CreateView):
+   model=Paciente
+   form_class=PacienteForm
+   template_name='paciente/crear_paciente.html'
+   success_url=reverse_lazy('paciente:listar_paciente')
+
 
 def crearPaciente(request):
    if request.method=='POST':

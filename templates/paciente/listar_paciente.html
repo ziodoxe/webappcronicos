@@ -71,7 +71,7 @@
            <div class="x_content">
                <div class="row">
                    <div class="col-sm-12">
-                     <div class="card-box table-responsive">
+                     < class="card-box table-responsive">
              <p class="text-muted font-13 m-b-30">
                Este listado muestra todos los pacientes registrados.
              </p>
@@ -83,7 +83,7 @@
                   <th>Direccion</th>
                   <th>Numero HC</th>
                   <th>Fecha de Nacimiento</th>
-                  <th>Peso</th>
+                  <th>Opciones</th>
                  </tr>
                </thead>
 
@@ -96,7 +96,11 @@
                     <td>{{ paciente.direccion }}</td>
                     <td>{{ paciente.h_clinica }}</td>
                     <td>{{ paciente.fnacimiento }}</td>
-                    <td>{{ paciente.peso }}</td>
+                    <!-- <td>{{ paciente.peso }}</td> -->
+                    <td>
+                      <button type="button" class="btn btn-primary">Editar</button>
+                      <button type="button" class="btn btn-danger">Eliminar</button>
+                    </td>
                   </tr>
                   {% endfor %}
                </tbody>
